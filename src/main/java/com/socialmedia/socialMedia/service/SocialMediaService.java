@@ -8,8 +8,8 @@ public interface SocialMediaService {
 
     List<SocialMedia> findAll();
 
-//    SocialMedia save(SocialMedia socialMedia);
-//
+    SocialMedia save(SocialMedia socialMedia);
+
 //    void deleteById(int theId);
 
 }
