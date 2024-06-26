@@ -29,4 +29,9 @@ public class SocialMediaRestController {
         SocialMedia dbMedia = socialMediaService.save(socialMedia);
         return dbMedia;
     }
+
+    @PutMapping("/socialmedia")
+    public SocialMedia updatePost(@RequestBody SocialMedia socialMedia){
+        return socialMediaService.save(socialMedia);
+    }
 }
