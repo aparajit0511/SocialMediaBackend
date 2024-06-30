@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class SocialMediaServiceImpl implements SocialMediaService {
@@ -29,6 +30,17 @@ public class SocialMediaServiceImpl implements SocialMediaService {
 
         return socialMediaRepository.save(socialMedia);
 
+    }
+
+    @Override
+    public Optional<SocialMedia> findById(int theId){
+        return socialMediaRepository.findById(theId);
+    }
+
+    @Transactional
+    @Override
+    public void deleteById(int theId){
+         socialMediaRepository.deleteById(theId);
     }
 
 
