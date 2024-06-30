@@ -2,10 +2,10 @@ package com.socialmedia.socialMedia.rest;
 
 import com.socialmedia.socialMedia.entity.SocialMedia;
 import com.socialmedia.socialMedia.service.SocialMediaService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/")
@@ -33,5 +33,23 @@ public class SocialMediaRestController {
     @PutMapping("/socialmedia")
     public SocialMedia updatePost(@RequestBody SocialMedia socialMedia){
         return socialMediaService.save(socialMedia);
+    }
+
+    @GetMapping("/socailmedia/{findID}")
+    public Optional<SocialMedia> findById(@PathVariable int findID){
+        Optional<SocialMedia> findId = socialMediaService.findById(findID);
+
+        if(findId == null){
+            throw new RuntimeException("ID not found");
+        }
+        return findId;
+    }
+
+    @DeleteMapping("/socialmedia/{postID}")
+    public void deleteById(@PathVariable int postID){
+
+        Optional<SocialMedia> posts = socialMediaService.findById(postID);
+
+        socialMediaService.deleteById(postID);
     }
 }
